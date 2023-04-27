@@ -4,7 +4,7 @@
         <name>EvolutionBoursiere</name>
     </assembly>
     <members>
-        <member name="M:EvolutionBoursiere.Controllers.CotesBoursieresController.GetCotesBoursieres">
+        <member name="M:EvolutionBoursiere.Controllers.CoteBoursiereController.GetCotesBoursieres">
             <summary>
             Obtenir toutes les côtes boursières.
             </summary>
@@ -12,7 +12,7 @@
             <response code="200">Retourne toutes les côtes boursières</response>
             <response code="400">Si le DbSet CotesBoursieres est nul</response>
         </member>
-        <member name="M:EvolutionBoursiere.Controllers.CotesBoursieresController.GetCoteBoursiere(System.Int64)">
+        <member name="M:EvolutionBoursiere.Controllers.CoteBoursiereController.GetCoteBoursiere(System.Int64)">
             <summary>
             Obtenir une côte boursière spécifique.
             </summary>
@@ -22,7 +22,7 @@
             <response code="400">Si le DbSet CotesBoursieres est nul</response>
             <response code="404">Si la côte boursière spécifiée n'existe pas</response>
         </member>
-        <member name="M:EvolutionBoursiere.Controllers.CotesBoursieresController.PutCoteBoursiere(System.Int64,EvolutionBoursiere.Models.CoteBoursiereDTO)">
+        <member name="M:EvolutionBoursiere.Controllers.CoteBoursiereController.PutCoteBoursiere(System.Int64,EvolutionBoursiere.Models.CoteBoursiereDTO)">
             <summary>
             Modifier une côte boursière spécifique.
             </summary>
@@ -33,7 +33,7 @@
             <response code="400">Si le DbSet CotesBoursieres est nul</response>
             <response code="404">Si la côte boursière spécifiée n'existe pas</response>
         </member>
-        <member name="M:EvolutionBoursiere.Controllers.CotesBoursieresController.PostCoteBoursiere(EvolutionBoursiere.Models.CoteBoursiereDTO)">
+        <member name="M:EvolutionBoursiere.Controllers.CoteBoursiereController.PostCoteBoursiere(EvolutionBoursiere.Models.CoteBoursiereDTO)">
              <summary>
              Créer une côte boursière.
              </summary>
@@ -52,7 +52,7 @@
              <response code="201">Retourne la côte boursière nouvellement créée</response>
              <response code="400">Si le DbSet CotesBoursieres est nul</response>
         </member>
-        <member name="M:EvolutionBoursiere.Controllers.CotesBoursieresController.DeleteCoteBoursiere(System.Int64)">
+        <member name="M:EvolutionBoursiere.Controllers.CoteBoursiereController.DeleteCoteBoursiere(System.Int64)">
             <summary>
             Supprimer une côte boursière spécifique.
             </summary>

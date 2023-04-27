@@ -41,4 +41,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.Logger.LogInformation("Exécution de l'application");
 app.Run();

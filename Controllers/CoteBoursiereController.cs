@@ -11,13 +11,15 @@ namespace EvolutionBoursiere.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CotesBoursieresController : ControllerBase
+    public class CoteBoursiereController : ControllerBase
     {
         private readonly CoteContext _context;
+        private readonly ILogger _logger;
 
-        public CotesBoursieresController(CoteContext context)
+        public CoteBoursiereController(CoteContext context, ILogger<CoteBoursiereController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         /// <summary>
@@ -29,6 +31,8 @@ namespace EvolutionBoursiere.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CoteBoursiereDTO>>> GetCotesBoursieres()
         {
+            _logger.LogInformation("Obtention de toutes les côtes boursières.");
+
             if (!CotesBoursieresExists())
             {
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
