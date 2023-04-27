@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EvolutionBoursiere.Models;
+namespace EvolutionBoursiere.Core.Entities;
 
 public class CoteBoursiere
 {

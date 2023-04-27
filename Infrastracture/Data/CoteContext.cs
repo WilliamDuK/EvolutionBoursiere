@@ -1,4 +1,4 @@
-using EvolutionBoursiere.Models;
+using EvolutionBoursiere.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EvolutionBoursiere.Infrastructure.Data;

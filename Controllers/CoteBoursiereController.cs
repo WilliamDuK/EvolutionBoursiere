@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EvolutionBoursiere.Infrastructure.Data;
-using EvolutionBoursiere.Models;
+using EvolutionBoursiere.Core.Entities;
 using EvolutionBoursiere.Dtos;
 
 namespace EvolutionBoursiere.Controllers
