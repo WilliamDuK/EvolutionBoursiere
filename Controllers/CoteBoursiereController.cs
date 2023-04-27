@@ -31,13 +31,13 @@ namespace EvolutionBoursiere.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CoteBoursiereDTO>>> GetCotesBoursieres()
         {
-            _logger.LogInformation("Obtention de toutes les côtes boursières.");
-
             if (!CotesBoursieresExists())
             {
+                _logger.LogCritical("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
             }
 
+            _logger.LogInformation("Obtention de toutes les côtes boursières.");
             return await _context.CotesBoursieres
                 .Select(x => CoteToDTO(x))
                 .ToListAsync();
@@ -56,15 +56,18 @@ namespace EvolutionBoursiere.Controllers
         {
             if (!CotesBoursieresExists())
             {
+                _logger.LogCritical("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
             }
 
             var coteBoursiere = await _context.CotesBoursieres.FindAsync(id);
             if (coteBoursiere == null)
             {
+                _logger.LogError($"La côte boursière avec l'id {id} n'existe pas.");
                 return NotFound();
             }
 
+            _logger.LogInformation($"Obtention de la côte boursière avec l'id {id}.");
             return CoteToDTO(coteBoursiere);
         }
 
@@ -82,12 +85,14 @@ namespace EvolutionBoursiere.Controllers
         {
             if (!CotesBoursieresExists())
             {
+                _logger.LogCritical("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
             }
 
             var coteBoursiere = await _context.CotesBoursieres.FindAsync(id);
             if (coteBoursiere == null)
             {
+                _logger.LogError($"La côte boursière avec l'id {id} n'existe pas.");
                 return NotFound();
             }
 
@@ -104,6 +109,7 @@ namespace EvolutionBoursiere.Controllers
             {
                 if (!CoteBoursiereExists(id))
                 {
+                    _logger.LogError($"La côte boursière avec l'id {id} n'existe pas.");
                     return NotFound();
                 }
                 else
@@ -112,6 +118,7 @@ namespace EvolutionBoursiere.Controllers
                 }
             }
 
+            _logger.LogInformation($"La côte boursière avec l'id {id} a été modifiée.");
             return NoContent();
         }
 
@@ -137,6 +144,7 @@ namespace EvolutionBoursiere.Controllers
         {
             if (!CotesBoursieresExists())
             {
+                _logger.LogCritical("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
             }
 
@@ -149,6 +157,7 @@ namespace EvolutionBoursiere.Controllers
             _context.CotesBoursieres.Add(coteBoursiere);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation($"La côte boursière avec l'id {coteBoursiere.id} a été créée.");
             return CreatedAtAction(nameof(GetCoteBoursiere), new { id = coteBoursiere.id }, CoteToDTO(coteBoursiere));
         }
 
@@ -165,18 +174,21 @@ namespace EvolutionBoursiere.Controllers
         {
             if (!CotesBoursieresExists())
             {
+                _logger.LogCritical("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
             }
 
             var coteBoursiere = await _context.CotesBoursieres.FindAsync(id);
             if (coteBoursiere == null)
             {
+                _logger.LogError($"La côte boursière avec l'id {id} n'existe pas.");
                 return NotFound();
             }
 
             _context.CotesBoursieres.Remove(coteBoursiere);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation($"La côte boursière avec l'id {id} a été supprimée.");
             return NoContent();
         }
 
