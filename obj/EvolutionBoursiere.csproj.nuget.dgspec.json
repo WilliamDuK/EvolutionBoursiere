@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {}
+    "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {}
   },
   "projects": {
-    "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {
+    "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
+        "projectUniqueName": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
         "projectName": "EvolutionBoursiere",
-        "projectPath": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
+        "projectPath": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
         "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\obj\\",
+        "outputPath": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,6 +21,7 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

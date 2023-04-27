@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1XKKnFFcDB0LCxZqjHNOipc9a7CXOaYCWoe45Ai3KACeMUxt1pu8cxxyFtLtQ1AsoHDqOo8FzrPHo0pag9Z1xQ==",
+  "dgSpecHash": "sBT2qi5SFXxXoZmBDeOY4r5cWtzR4SK9ub1HUiRgQEdmUHwB2Rro1g0yrzCsiOKVrMq6NSPPkvUP25amWPJxZQ==",
   "success": true,
-  "projectFilePath": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
+  "projectFilePath": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\William\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\William\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
