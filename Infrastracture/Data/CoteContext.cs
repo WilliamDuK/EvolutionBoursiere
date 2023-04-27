@@ -1,6 +1,7 @@
+using EvolutionBoursiere.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EvolutionBoursiere.Models;
+namespace EvolutionBoursiere.Infrastructure.Data;
 
 public class CoteContext : DbContext
 {

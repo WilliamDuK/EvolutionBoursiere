@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using EvolutionBoursiere.Models;
+using EvolutionBoursiere.Infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 

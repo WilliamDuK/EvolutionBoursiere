@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using EvolutionBoursiere.Infrastructure.Data;
 using EvolutionBoursiere.Models;
+using EvolutionBoursiere.Dtos;
 
 namespace EvolutionBoursiere.Controllers
 {
@@ -29,7 +31,7 @@ namespace EvolutionBoursiere.Controllers
         /// <response code="200">Retourne toutes les côtes boursières</response>
         /// <response code="400">Si le DbSet CotesBoursieres est nul</response>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CoteBoursiereDTO>>> GetCotesBoursieres()
+        public async Task<ActionResult<IEnumerable<CoteBoursiereDto>>> GetCotesBoursieres()
         {
             if (!CotesBoursieresExists())
             {
@@ -39,7 +41,7 @@ namespace EvolutionBoursiere.Controllers
 
             _logger.LogInformation("Obtention de toutes les côtes boursières.");
             return await _context.CotesBoursieres
-                .Select(x => CoteToDTO(x))
+                .Select(x => CoteToDto(x))
                 .ToListAsync();
         }
 
@@ -52,7 +54,7 @@ namespace EvolutionBoursiere.Controllers
         /// <response code="400">Si le DbSet CotesBoursieres est nul</response>
         /// <response code="404">Si la côte boursière spécifiée n'existe pas</response>
         [HttpGet("{id}")]
-        public async Task<ActionResult<CoteBoursiereDTO>> GetCoteBoursiere(long id)
+        public async Task<ActionResult<CoteBoursiereDto>> GetCoteBoursiere(long id)
         {
             if (!CotesBoursieresExists())
             {
@@ -68,20 +70,20 @@ namespace EvolutionBoursiere.Controllers
             }
 
             _logger.LogInformation($"Obtention de la côte boursière avec l'id {id}.");
-            return CoteToDTO(coteBoursiere);
+            return CoteToDto(coteBoursiere);
         }
 
         /// <summary>
         /// Modifier une côte boursière spécifique.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="coteBoursiereDTO"></param>
+        /// <param name="coteBoursiereDto"></param>
         /// <returns></returns>
         /// <response code="204">Retourne succès sans contenu</response>
         /// <response code="400">Si le DbSet CotesBoursieres est nul</response>
         /// <response code="404">Si la côte boursière spécifiée n'existe pas</response>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCoteBoursiere(long id, CoteBoursiereDTO coteBoursiereDTO)
+        public async Task<IActionResult> PutCoteBoursiere(long id, CoteBoursiereDto coteBoursiereDto)
         {
             if (!CotesBoursieresExists())
             {
@@ -96,8 +98,8 @@ namespace EvolutionBoursiere.Controllers
                 return NotFound();
             }
 
-            coteBoursiere.Titre = coteBoursiereDTO.Titre;
-            coteBoursiere.Description = coteBoursiereDTO.Description;
+            coteBoursiere.Titre = coteBoursiereDto.Titre;
+            coteBoursiere.Description = coteBoursiereDto.Description;
 
             _context.Entry(coteBoursiere).State = EntityState.Modified;
 
@@ -125,7 +127,7 @@ namespace EvolutionBoursiere.Controllers
         /// <summary>
         /// Créer une côte boursière.
         /// </summary>
-        /// <param name="coteBoursiereDTO"></param>
+        /// <param name="coteBoursiereDto"></param>
         /// <returns>La côte boursière nouvellement créée</returns>
         /// <remarks>
         /// Requête échantillon:
@@ -140,7 +142,7 @@ namespace EvolutionBoursiere.Controllers
         /// <response code="201">Retourne la côte boursière nouvellement créée</response>
         /// <response code="400">Si le DbSet CotesBoursieres est nul</response>
         [HttpPost]
-        public async Task<ActionResult<CoteBoursiereDTO>> PostCoteBoursiere(CoteBoursiereDTO coteBoursiereDTO)
+        public async Task<ActionResult<CoteBoursiereDto>> PostCoteBoursiere(CoteBoursiereDto coteBoursiereDto)
         {
             if (!CotesBoursieresExists())
             {
@@ -150,15 +152,15 @@ namespace EvolutionBoursiere.Controllers
 
             var coteBoursiere = new CoteBoursiere
             {
-                Titre = coteBoursiereDTO.Titre,
-                Description = coteBoursiereDTO.Description
+                Titre = coteBoursiereDto.Titre,
+                Description = coteBoursiereDto.Description
             };
 
             _context.CotesBoursieres.Add(coteBoursiere);
             await _context.SaveChangesAsync();
 
             _logger.LogInformation($"La côte boursière avec l'id {coteBoursiere.id} a été créée.");
-            return CreatedAtAction(nameof(GetCoteBoursiere), new { id = coteBoursiere.id }, CoteToDTO(coteBoursiere));
+            return CreatedAtAction(nameof(GetCoteBoursiere), new { id = coteBoursiere.id }, CoteToDto(coteBoursiere));
         }
 
         /// <summary>
@@ -202,7 +204,7 @@ namespace EvolutionBoursiere.Controllers
             return _context.CotesBoursieres != null;
         }
 
-        private static CoteBoursiereDTO CoteToDTO(CoteBoursiere coteBoursiere) => new CoteBoursiereDTO
+        private static CoteBoursiereDto CoteToDto(CoteBoursiere coteBoursiere) => new CoteBoursiereDto
         {
             Titre = coteBoursiere.Titre,
             Description = coteBoursiere.Description
