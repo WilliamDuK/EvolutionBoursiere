@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {}
+    "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {}
   },
   "projects": {
-    "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {
+    "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
+        "projectUniqueName": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
         "projectName": "EvolutionBoursiere",
-        "projectPath": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
+        "projectPath": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\EvolutionBoursiere.csproj",
         "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "D:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\obj\\",
+        "outputPath": "d:\\Études\\Microsoft .NET\\Workspace\\EvolutionBoursiere\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,7 +21,6 @@
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,6 +60,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.19.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
