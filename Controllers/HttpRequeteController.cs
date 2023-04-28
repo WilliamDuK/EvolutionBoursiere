@@ -38,6 +38,25 @@ namespace EvolutionBoursiere.Controllers
             return await _mongoDBService.GetAsync();
         }
 
+        /// <summary>
+        /// Créer une requête HTTP.
+        /// </summary>
+        /// <param name="httpRequete"></param>
+        /// <returns>La requête HTTP nouvellement créée</returns>
+        /// <remarks>
+        /// Requête échantillon:
+        ///
+        ///     POST /HttpRequete
+        ///     {
+        ///        "Method" = "POST",
+        ///        "Path" = "/CoteBoursiere",
+        ///        "Host" = "Localhost",
+        ///        "Body" = "{"Titre":"Titre #1","Description":"Description #1"}",
+        ///        "CreatedAt" = "2023-04-28T18:45:08.599+00:00"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="201">Retourne la requête HTTP nouvellement créée</response>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] HttpRequete httpRequete)
         {
@@ -45,6 +64,12 @@ namespace EvolutionBoursiere.Controllers
             return CreatedAtAction(nameof(Get), new { id = httpRequete.Id }, httpRequete);
         }
 
+        /// <summary>
+        /// Supprimer une requête HTTP spécifique.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="204">Retourne succès sans contenu</response>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
