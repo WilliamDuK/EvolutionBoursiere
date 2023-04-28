@@ -89,7 +89,7 @@ namespace EvolutionBoursiere.Controllers
         /// <response code="400">Si le DbSet CotesBoursieres est nul</response>
         /// <response code="404">Si la côte boursière spécifiée n'existe pas</response>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCoteBoursiere(long id, CoteBoursiereDto coteBoursiereDto)
+        public async Task<IActionResult> PutCoteBoursiere(long id, [FromBody] CoteBoursiereDto coteBoursiereDto)
         {
             if (!CotesBoursieresExists())
             {
@@ -149,7 +149,7 @@ namespace EvolutionBoursiere.Controllers
         /// <response code="201">Retourne la côte boursière nouvellement créée</response>
         /// <response code="400">Si le DbSet CotesBoursieres est nul</response>
         [HttpPost]
-        public async Task<ActionResult<CoteBoursiereDto>> PostCoteBoursiere(CoteBoursiereDto coteBoursiereDto)
+        public async Task<ActionResult<CoteBoursiereDto>> PostCoteBoursiere([FromBody] CoteBoursiereDto coteBoursiereDto)
         {
             if (!CotesBoursieresExists())
             {
