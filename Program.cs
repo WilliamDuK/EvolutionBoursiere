@@ -29,7 +29,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoDBService>();
-builder.Services.AddMvc().AddControllersAsServices(); // Afin d'utiliser le controlleur HttpRequete dans le controlleur CoteBoursiere
+builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser HttpRequeteController dans CoteBoursiereController
 
 var app = builder.Build();
 
