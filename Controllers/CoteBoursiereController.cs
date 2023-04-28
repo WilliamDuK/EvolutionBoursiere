@@ -17,11 +17,13 @@ namespace EvolutionBoursiere.Controllers
     {
         private readonly CoteContext _context;
         private readonly ILogger _logger;
+        private readonly HttpRequeteController _http;
 
-        public CoteBoursiereController(CoteContext context, ILogger<CoteBoursiereController> logger)
+        public CoteBoursiereController(CoteContext context, ILogger<CoteBoursiereController> logger, HttpRequeteController http)
         {
             _context = context;
             _logger = logger;
+            _http = http;
         }
 
         /// <summary>
@@ -39,10 +41,13 @@ namespace EvolutionBoursiere.Controllers
                 return Problem("L'ensemble 'CoteContext.CotesBoursieres' est nul.");
             }
 
-            _logger.LogInformation("Obtention de toutes les côtes boursières.");
-            return await _context.CotesBoursieres
+            var cotesBoursieres = await _context.CotesBoursieres
                 .Select(x => CoteToDto(x))
                 .ToListAsync();
+            _logger.LogInformation("Obtention de toutes les côtes boursières.");
+            await PostHttpRequete("GET", "/CoteBoursiere", "host", "body", DateTime.Now);
+
+            return cotesBoursieres;
         }
 
         /// <summary>
@@ -202,6 +207,18 @@ namespace EvolutionBoursiere.Controllers
         private bool CotesBoursieresExists()
         {
             return _context.CotesBoursieres != null;
+        }
+
+        private async Task PostHttpRequete(string method, string path, string host, string body, DateTime createdAt)
+        {
+            await _http.Post(new HttpRequete
+            {
+                Method = method,
+                Path = path,
+                Host = host,
+                Body = body,
+                CreatedAt = createdAt
+            });
         }
 
         private static CoteBoursiereDto CoteToDto(CoteBoursiere coteBoursiere) => new CoteBoursiereDto

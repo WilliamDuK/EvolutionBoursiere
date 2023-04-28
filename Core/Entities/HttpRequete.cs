@@ -16,14 +16,8 @@ public class HttpRequete
     [BsonElement("path")]
     public string? Path { get; set; }
 
-    [BsonElement("address")]
-    public string? Address { get; set; }
-
     [BsonElement("host")]
     public string? Host { get; set; }
-
-    [BsonElement("userAgent")]
-    public string? UserAgent { get; set; }
 
     [BsonElement("body")]
     public string? Body { get; set; }
