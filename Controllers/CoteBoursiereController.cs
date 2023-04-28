@@ -165,6 +165,7 @@ namespace EvolutionBoursiere.Controllers
 
             _context.CotesBoursieres.Add(coteBoursiere);
             await _context.SaveChangesAsync();
+            await PostHttpRequete("POST", $"/CoteBoursiere", coteBoursiereDto);
 
             _logger.LogInformation($"La côte boursière avec l'id {coteBoursiere.id} a été créée.");
             return CreatedAtAction(nameof(GetCoteBoursiere), new { id = coteBoursiere.id }, CoteToDto(coteBoursiere));
@@ -196,6 +197,7 @@ namespace EvolutionBoursiere.Controllers
 
             _context.CotesBoursieres.Remove(coteBoursiere);
             await _context.SaveChangesAsync();
+            await PostHttpRequete("DELETE", $"/CoteBoursiere/{id}", new {});
 
             _logger.LogInformation($"La côte boursière avec l'id {id} a été supprimée.");
             return NoContent();
