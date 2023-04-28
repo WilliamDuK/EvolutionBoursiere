@@ -44,9 +44,9 @@ namespace EvolutionBoursiere.Controllers
             var cotesBoursieres = await _context.CotesBoursieres
                 .Select(x => CoteToDto(x))
                 .ToListAsync();
-            _logger.LogInformation("Obtention de toutes les côtes boursières.");
-            await PostHttpRequete("GET", "/CoteBoursiere", "{}");
+            await PostHttpRequete("GET", "/CoteBoursiere", new {});
 
+            _logger.LogInformation("Obtention de toutes les côtes boursières.");
             return cotesBoursieres;
         }
 
@@ -73,6 +73,7 @@ namespace EvolutionBoursiere.Controllers
                 _logger.LogError($"La côte boursière avec l'id {id} n'existe pas.");
                 return NotFound();
             }
+            await PostHttpRequete("GET", "/CoteBoursiere/{id}", new {id = id.ToString()});
 
             _logger.LogInformation($"Obtention de la côte boursière avec l'id {id}.");
             return CoteToDto(coteBoursiere);
@@ -209,14 +210,14 @@ namespace EvolutionBoursiere.Controllers
             return _context.CotesBoursieres != null;
         }
 
-        private async Task PostHttpRequete(string method, string path, string body)
+        private async Task PostHttpRequete(string method, string path, Object body)
         {
             await _http.Post(new HttpRequete
             {
                 Method = method,
                 Path = path,
                 Host = HttpContext.Request.Host.Host,
-                Body = body,
+                Body = Newtonsoft.Json.JsonConvert.SerializeObject(body),
                 CreatedAt = DateTime.Now
             });
         }
