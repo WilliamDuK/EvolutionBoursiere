@@ -73,7 +73,7 @@ namespace EvolutionBoursiere.Controllers
                 _logger.LogError($"La côte boursière avec l'id {id} n'existe pas.");
                 return NotFound();
             }
-            await PostHttpRequete("GET", "/CoteBoursiere/{id}", new {id = id.ToString()});
+            await PostHttpRequete("GET", $"/CoteBoursiere/{id}", new {});
 
             _logger.LogInformation($"Obtention de la côte boursière avec l'id {id}.");
             return CoteToDto(coteBoursiere);
@@ -125,6 +125,7 @@ namespace EvolutionBoursiere.Controllers
                     throw;
                 }
             }
+            await PostHttpRequete("PUT", $"/CoteBoursiere/{id}", coteBoursiereDto);
 
             _logger.LogInformation($"La côte boursière avec l'id {id} a été modifiée.");
             return NoContent();
