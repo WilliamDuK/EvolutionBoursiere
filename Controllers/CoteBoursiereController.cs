@@ -45,7 +45,7 @@ namespace EvolutionBoursiere.Controllers
                 .Select(x => CoteToDto(x))
                 .ToListAsync();
             _logger.LogInformation("Obtention de toutes les côtes boursières.");
-            await PostHttpRequete("GET", "/CoteBoursiere", "host", "body", DateTime.Now);
+            await PostHttpRequete("GET", "/CoteBoursiere", "{}");
 
             return cotesBoursieres;
         }
@@ -209,15 +209,15 @@ namespace EvolutionBoursiere.Controllers
             return _context.CotesBoursieres != null;
         }
 
-        private async Task PostHttpRequete(string method, string path, string host, string body, DateTime createdAt)
+        private async Task PostHttpRequete(string method, string path, string body)
         {
             await _http.Post(new HttpRequete
             {
                 Method = method,
                 Path = path,
-                Host = host,
+                Host = HttpContext.Request.Host.Host,
                 Body = body,
-                CreatedAt = createdAt
+                CreatedAt = DateTime.Now
             });
         }
 
