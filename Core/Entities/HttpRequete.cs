@@ -6,19 +6,6 @@ namespace EvolutionBoursiere.Core.Entities;
 
 public class HttpRequete
 {
-    public HttpRequete(string id, string method, string path, string address, string host,
-        string userArgent, string body, DateTime createdAt)
-    {
-        Id = id;
-        Method = method;
-        Path = path;
-        Address = address;
-        Host = host;
-        UserAgent = UserAgent;
-        Body = body;
-        CreatedAt = createdAt;
-    }
-
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
