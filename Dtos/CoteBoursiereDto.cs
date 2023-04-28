@@ -1,7 +1,8 @@
-namespace EvolutionBoursiere.Models;
+namespace EvolutionBoursiere.Dtos;
 
-public class CoteBoursiereDTO
+public class CoteBoursiereDto
 {
     public string? Titre { get; set; }
+    
     public string? Description { get; set; }
 }

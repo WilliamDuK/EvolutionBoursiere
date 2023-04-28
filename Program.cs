@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using EvolutionBoursiere.Models;
+using EvolutionBoursiere.Infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using EvolutionBoursiere.Core.Entities;
+using EvolutionBoursiere.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
@@ -25,6 +27,9 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<MongoDBService>();
+builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser HttpRequeteController dans CoteBoursiereController
 
 var app = builder.Build();
 
@@ -35,7 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// FIXME: app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
@@ -43,3 +48,5 @@ app.MapControllers();
 
 app.Logger.LogInformation("Exécution de l'application");
 app.Run();
+
+// TODO: Fermer toutes les connexions MongoDB de la BD "Bourse" lorsque l'application commence à se fermer
