@@ -26,6 +26,7 @@ public class MongoDBService {
         await _httpRequetesCollection.InsertOneAsync(httpRequete);
         return;
     }
+    
     public async Task DeleteAsync(string id)
     {
         FilterDefinition<HttpRequete> filter = Builders<HttpRequete>.Filter.Eq("Id", id);
