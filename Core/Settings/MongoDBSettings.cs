@@ -1,4 +1,4 @@
-namespace EvolutionBoursiere.Core.Entities;
+namespace EvolutionBoursiere.Core.Settings;
 
 public class MongoDBSettings {
 

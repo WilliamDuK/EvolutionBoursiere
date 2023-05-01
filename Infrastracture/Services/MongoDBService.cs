@@ -2,6 +2,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using EvolutionBoursiere.Core.Entities;
+using EvolutionBoursiere.Core.Settings;
 
 namespace EvolutionBoursiere.Infrastructure.Services;
 

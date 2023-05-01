@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using EvolutionBoursiere.Infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using EvolutionBoursiere.Core.Entities;
+using EvolutionBoursiere.Core.Settings;
 using EvolutionBoursiere.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
