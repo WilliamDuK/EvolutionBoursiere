@@ -167,6 +167,35 @@ namespace EvolutionBoursiere.Controllers
         }
 
         /// <summary>
+        /// Supprimer toutes les côtes boursières.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="204">Retourne succès sans contenu</response>
+        /// <response code="400">Si le DbSet Stocks est nul</response>
+        [HttpDelete]
+        public async Task<IActionResult> DeleteStocks()
+        {
+            if (!StocksExists())
+            {
+                _logger.LogCritical("L'ensemble 'StockContext.Stocks' est nul.");
+                return Problem("L'ensemble 'StockContext.Stocks' est nul.");
+            }
+
+            var stocks = await _context.Stocks
+                .ToListAsync();
+            foreach (var stock in stocks)
+            {
+                _context.Stocks.Remove(stock);
+            }
+
+            await _context.SaveChangesAsync();
+            await PostHttpRequete("DELETE", $"/Stock", new {});
+
+            _logger.LogInformation($"Les côtes boursières ont été supprimées.");
+            return NoContent();
+        }
+
+        /// <summary>
         /// Supprimer une côte boursière spécifique.
         /// </summary>
         /// <param name="id"></param>
