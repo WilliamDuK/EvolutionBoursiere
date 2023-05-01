@@ -66,5 +66,17 @@ namespace EvolutionBoursiere.Controllers
             await _mongoDBService.DeleteAsync(id);
             return NoContent();
         }
+
+        /// <summary>
+        /// Supprimer toutes les requêtes HTTP.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="204">Retourne succès sans contenu</response>
+        [HttpDelete]
+        public async Task<IActionResult> Clear()
+        {
+            await _mongoDBService.ClearAsync();
+            return NoContent();
+        }
     }
 }
