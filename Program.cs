@@ -29,7 +29,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoDBService>();
-//builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser HttpRequeteController dans CoteBoursiereController
+// builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser tous les controlleurs comme des services
 builder.Services.AddTransient<EvolutionBoursiere.Controllers.HttpRequeteController, EvolutionBoursiere.Controllers.HttpRequeteController>();
 
 var app = builder.Build();
@@ -51,5 +51,4 @@ app.Logger.LogInformation("Exécution de l'application");
 app.Run();
 
 // TODO: Faire les tests unitaires pour la logique d'affaires et la logique de données.
-// TODO: Fermer toutes les connexions MongoDB de la BD "Bourse" lorsque l'application commence à se fermer.
 // TODO: Créer une interface Web CRUD pour les côtes boursières et les requêtes HTTP.
