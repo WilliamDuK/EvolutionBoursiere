@@ -50,3 +50,5 @@ app.Logger.LogInformation("Exécution de l'application");
 app.Run();
 
 // TODO: Fermer toutes les connexions MongoDB de la BD "Bourse" lorsque l'application commence à se fermer
+
+// TODO: Faire les tests unitaires des controlleurs??? Des Entités???
