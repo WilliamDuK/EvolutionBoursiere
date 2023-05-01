@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EvolutionBoursiere.Core.Entities;
 
-public class CoteBoursiere
+public class Stock
 {
     [Key]
     public long id { get; set; }

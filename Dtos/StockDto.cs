@@ -1,6 +1,6 @@
 namespace EvolutionBoursiere.Dtos;
 
-public class CoteBoursiereDto
+public class StockDto
 {
     public string? Titre { get; set; }
     

@@ -12,7 +12,7 @@ builder.Logging.AddDebug();
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddDbContext<CoteContext>(opt =>
+builder.Services.AddDbContext<StockContext>(opt =>
     opt.UseInMemoryDatabase("Bourse"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "CoteBoursiere API",
+        Title = "Stock API",
         Description = "Un ASP.NET Core Web API pour parcourir les côtes boursières"
     });
 

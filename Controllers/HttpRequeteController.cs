@@ -39,7 +39,7 @@ namespace EvolutionBoursiere.Controllers
         ///     POST /HttpRequete
         ///     {
         ///        "Method" = "POST",
-        ///        "Path" = "/CoteBoursiere",
+        ///        "Path" = "/Stock",
         ///        "Host" = "Localhost",
         ///        "Body" = "{"Titre":"Titre #1","Description":"Description #1"}",
         ///        "CreatedAt" = "2023-04-28T18:45:08.599+00:00"
