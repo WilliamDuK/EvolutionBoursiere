@@ -45,39 +45,25 @@ public class ArticlesApiService : IArticlesApiService
             {
                 if (isFirst)
                 {
-                    uri += $"?{GetKey()}";
+                    uri += $"?apiKey=[KEY]"; // TODO: Implémenter la clé API
                     isFirst = false;
-                }
-                else
-                {
-                    uri += "&";
                 }
 
                 if (property.PropertyType != typeof(List<string>))
                 {
-                    uri += $"{property.Name}={value}";
+                    uri += $"&{property.Name}={value}";
                 }
                 else
                 {
                     List<string> strList = (List<string>)value;
                     foreach (var str in strList)
                     {
-                        if (str != strList.First())
-                        {
-                            uri += "&";
-                        }
-                        uri += $"{property.Name}={str}";
+                        uri += $"&{property.Name}={str}";
                     }
                 }
             }
         }
 
         return System.Web.HttpUtility.UrlEncode(uri);
-    }
-
-    private string GetKey()
-    {
-        // TODO: return $"apiKey={[KEY]}";
-        return "";
     }
 }
