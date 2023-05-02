@@ -45,7 +45,7 @@ public class ArticlesApiService : IArticlesApiService
             {
                 if (isFirst)
                 {
-                    uri += $"?apiKey=[KEY]"; // TODO: Implémenter la clé API
+                    uri += $"apiKey=[KEY]"; // TODO: Implémenter la clé API
                     isFirst = false;
                 }
 
@@ -64,6 +64,6 @@ public class ArticlesApiService : IArticlesApiService
             }
         }
 
-        return System.Web.HttpUtility.UrlEncode(uri);
+        return $"?{System.Web.HttpUtility.UrlEncode(uri)}";
     }
 }
