@@ -40,7 +40,7 @@ public class ArticlesApiService : IArticlesApiService
 
         foreach (var property in config.GetType().GetProperties())
         {
-            if (property != null)
+            if (property.GetValue(config, null) != null)
             {
                 if (isFirst)
                 {
