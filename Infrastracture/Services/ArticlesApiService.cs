@@ -44,6 +44,7 @@ public class ArticlesApiService: IArticlesApiService
             {
                 if (isFirst)
                 {
+                    uri += $"?{GetKey()}";
                     isFirst = false;
                 }
                 else
@@ -71,5 +72,11 @@ public class ArticlesApiService: IArticlesApiService
         }
         
         return System.Web.HttpUtility.UrlEncode(uri);
+    }
+
+    private string GetKey()
+    {
+        // TODO: return "apiKey=";
+        return "";
     }
 }
