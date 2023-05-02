@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using EvolutionBoursiere.Infrastructure.Data;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using EvolutionBoursiere.Core.Settings;
+using EvolutionBoursiere.Core.Interfaces;
+using EvolutionBoursiere.Infrastructure.Data;
 using EvolutionBoursiere.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,7 @@ builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("Mo
 builder.Services.AddSingleton<MongoDBService>();
 // builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser tous les controlleurs comme des services
 builder.Services.AddTransient<EvolutionBoursiere.Controllers.HttpRequeteController, EvolutionBoursiere.Controllers.HttpRequeteController>();
+builder.Services.AddSingleton<IArticlesApiService, ArticlesApiService>();
 
 var app = builder.Build();
 
