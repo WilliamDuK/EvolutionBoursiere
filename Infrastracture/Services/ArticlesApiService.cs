@@ -4,7 +4,7 @@ using EvolutionBoursiere.Core.Interfaces;
 
 namespace EvolutionBoursiere.Infrastructure.Services;
 
-public class ArticlesApiService: IArticlesApiService
+public class ArticlesApiService : IArticlesApiService
 {
     private static readonly HttpClient _client;
 
@@ -23,7 +23,7 @@ public class ArticlesApiService: IArticlesApiService
         if (response.IsSuccessStatusCode)
         {
             var stringResponse = await response.Content.ReadAsStringAsync();
-    
+
             return JsonSerializer.Deserialize<List<Stock>>(stringResponse,
                 new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }) ?? new List<Stock>();
         }
@@ -38,7 +38,7 @@ public class ArticlesApiService: IArticlesApiService
         string uri = "";
         bool isFirst = true;
 
-        foreach(var property in config.GetType().GetProperties())
+        foreach (var property in config.GetType().GetProperties())
         {
             if (property != null)
             {
@@ -51,7 +51,7 @@ public class ArticlesApiService: IArticlesApiService
                 {
                     uri += "&";
                 }
-                
+
                 if (property.PropertyType != typeof(List<string>))
                 {
                     uri += $"{property.Name}={property.GetValue(config, null)}";
@@ -70,7 +70,7 @@ public class ArticlesApiService: IArticlesApiService
                 }
             }
         }
-        
+
         return System.Web.HttpUtility.UrlEncode(uri);
     }
 
