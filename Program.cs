@@ -53,3 +53,4 @@ app.Run();
 // TODO: Faire les tests unitaires pour la logique d'affaires et la logique de données.
 // TODO: Créer une interface Web CRUD pour les côtes boursières et les requêtes HTTP.
 // TODO: Implémenter HttpRequete à partir d'une extension de HttpRequest.
+// TODO: /!\ Corriger mon architecture! /!\
