@@ -19,21 +19,18 @@ public class ArticlesApiService: IArticlesApiService
     public async Task<List<Stock>> GetArticles(ArticlesApiConfiguration config)
     {
         var url = string.Format(GetUri(config));
-        var result = new List<Stock>();
         var response = await _client.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
             var stringResponse = await response.Content.ReadAsStringAsync();
     
-            result = JsonSerializer.Deserialize<List<Stock>>(stringResponse,
-                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            return JsonSerializer.Deserialize<List<Stock>>(stringResponse,
+                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }) ?? new List<Stock>();
         }
         else
         {
             throw new HttpRequestException(response.ReasonPhrase);
         }
-    
-        return result ?? new List<Stock>();
     }
 
     private string GetUri(ArticlesApiConfiguration config)
