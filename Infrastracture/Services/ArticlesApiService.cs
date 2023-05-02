@@ -40,7 +40,8 @@ public class ArticlesApiService : IArticlesApiService
 
         foreach (var property in config.GetType().GetProperties())
         {
-            if (property.GetValue(config, null) != null)
+            var value = property.GetValue(config, null);
+            if (value != null)
             {
                 if (isFirst)
                 {
@@ -54,11 +55,11 @@ public class ArticlesApiService : IArticlesApiService
 
                 if (property.PropertyType != typeof(List<string>))
                 {
-                    uri += $"{property.Name}={property.GetValue(config, null)}";
+                    uri += $"{property.Name}={value}";
                 }
                 else
                 {
-                    List<string> strList = (List<string>?)property.GetValue(config, null) ?? new List<string>();
+                    List<string> strList = (List<string>)value;
                     foreach (var str in strList)
                     {
                         if (str != strList.First())
@@ -76,7 +77,7 @@ public class ArticlesApiService : IArticlesApiService
 
     private string GetKey()
     {
-        // TODO: return "apiKey=";
+        // TODO: return $"apiKey={[KEY]}";
         return "";
     }
 }
