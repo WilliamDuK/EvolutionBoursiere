@@ -8,6 +8,7 @@ public class Sentiment
 
     public Sentiment(double pos, double neg, double neu)
     {
+        // TODO: Les trois paramètres doivent égaler 1.00.
         positive = pos;
         negative = neg;
         neutral = neu;
