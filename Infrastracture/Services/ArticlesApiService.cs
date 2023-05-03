@@ -1,6 +1,6 @@
 using System.Text;
 using System.Text.Json;
-using EvolutionBoursiere.Core.Entities;
+using EvolutionBoursiere.Core.Entities.Articles.Api;
 using EvolutionBoursiere.Core.Interfaces;
 using System.Globalization;
 
@@ -18,7 +18,7 @@ public class ArticlesApiService : IArticlesApiService
         };
     }
 
-    public async Task<List<Stock>> GetArticles(ArticlesApiConfiguration config)
+    public async Task<ArticlesApiResponse> GetArticles(ArticlesApiConfiguration config)
     {
         var url = string.Format(GetUri(config));
         var response = await _client.GetAsync(url);
@@ -26,8 +26,8 @@ public class ArticlesApiService : IArticlesApiService
         {
             var stringResponse = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<List<Stock>>(stringResponse,
-                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }) ?? new List<Stock>();
+            return JsonSerializer.Deserialize<ArticlesApiResponse>(stringResponse,
+                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }) ?? new ArticlesApiResponse();
         }
         else
         {

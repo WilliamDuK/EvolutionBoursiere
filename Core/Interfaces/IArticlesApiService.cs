@@ -1,8 +1,8 @@
-using EvolutionBoursiere.Core.Entities;
+using EvolutionBoursiere.Core.Entities.Articles.Api;
 
 namespace EvolutionBoursiere.Core.Interfaces;
 
 public interface IArticlesApiService
 {
-    Task<List<Stock>> GetArticles(ArticlesApiConfiguration config);
+    Task<ArticlesApiResponse> GetArticles(ArticlesApiConfiguration config);
 }
