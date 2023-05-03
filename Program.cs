@@ -15,6 +15,8 @@ builder.Logging.AddDebug();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StockContext>(opt =>
     opt.UseInMemoryDatabase("Bourse"));
+builder.Services.AddDbContext<ArticleContext>(opt =>
+    opt.UseInMemoryDatabase("Articles"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
