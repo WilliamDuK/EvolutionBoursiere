@@ -51,7 +51,7 @@ public class ArticlesApiService : IArticlesApiService
                     isFirst = false;
                 }
 
-                if (property.PropertyType == typeof(float))
+                if (property.PropertyType == typeof(Single?))
                 {
                     float floatValue = (float)value;
                     NumberFormatInfo nfi = new NumberFormatInfo();
