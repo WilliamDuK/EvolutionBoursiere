@@ -83,7 +83,7 @@ namespace EvolutionBoursiere.Controllers
                 return Problem("L'ensemble 'ArticleContext.Articles' est nul.");
             }
 
-            // FIXME: System.InvalidOperationException: No suitable constructor was found for entity type 'Category'. The following constructors had parameters that could not be bound to properties of the entity type: Cannot bind 'value' in 'Category(string value)
+            // FIXME: System.InvalidOperationException: No suitable constructor was found for entity type 'Category'. The following constructors had parameters that could not be bound to properties of the entity type: Cannot bind 'value' in 'Category(string value). Note that only mapped properties can be bound to constructor parameters. Navigations to related entities, including references to owned types, cannot be bound.
             var articles = await _context.Articles
                 .ToListAsync();
             foreach (var article in articles)
