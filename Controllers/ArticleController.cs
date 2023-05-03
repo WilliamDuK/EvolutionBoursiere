@@ -32,7 +32,7 @@ namespace EvolutionBoursiere.Controllers
         /// <response code="204">Retourne succès sans contenu</response>
         /// <response code="400">Si le DbSet Articles est nul</response>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
+        public async Task<IActionResult> GetArticles()
         {
             if (!ArticlesExists())
             {
