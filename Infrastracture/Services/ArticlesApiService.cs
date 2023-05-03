@@ -88,7 +88,6 @@ public class ArticlesApiService : IArticlesApiService
         sb.Replace("?", "%3F");
         sb.Replace("True", "true");
         sb.Replace("False", "false");
-        // FIXME: Le séparateur des valeurs 'float' utilise une virgule au lieu d'un point.
 
         return sb.ToString();
     }
