@@ -2,8 +2,9 @@ namespace EvolutionBoursiere.Core.Entities.Articles.Models;
 
 public class MatchedAuthor
 {
-    public string? id { get; set; }
-    public string name { get; set; }
+    public MatchedAuthor()
+    {
+    }
 
     public MatchedAuthor(string value)
     {
@@ -15,4 +16,7 @@ public class MatchedAuthor
         name = value;
         id = i;
     }
+
+    public string? id { get; set; }
+    public string? name { get; set; }
 }

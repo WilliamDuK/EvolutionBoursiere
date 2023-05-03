@@ -2,11 +2,9 @@ namespace EvolutionBoursiere.Core.Entities.Articles.Models;
 
 public class Location
 {
-	public string country { get; set; }
-	public string city { get; set; }
-	public string? state { get; set; }
-	public string? county { get; set; }
-	public string? area { get; set; }
+	public Location()
+	{
+	}
 
 	public Location(string co, string ci)
 	{
@@ -37,4 +35,10 @@ public class Location
 		county = cu;
 		area = a;
 	}
+
+	public string? country { get; set; }
+	public string? city { get; set; }
+	public string? state { get; set; }
+	public string? county { get; set; }
+	public string? area { get; set; }
 }
