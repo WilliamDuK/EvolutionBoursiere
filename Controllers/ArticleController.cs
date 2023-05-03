@@ -56,7 +56,7 @@ namespace EvolutionBoursiere.Controllers
                 lon = (float)10.020f
             };
 
-            var articlesResponse = await _service.GetArticles(config);
+            ArticlesApiResponse articlesResponse = await _service.GetArticles(config);
             foreach (var article in articlesResponse.articles)
             {
                 _context.Articles.Add(article);
