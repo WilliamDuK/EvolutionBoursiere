@@ -1,6 +1,8 @@
+using System.Text;
 using System.Text.Json;
 using EvolutionBoursiere.Core.Entities;
 using EvolutionBoursiere.Core.Interfaces;
+using System.Globalization;
 
 namespace EvolutionBoursiere.Infrastructure.Services;
 
@@ -49,7 +51,14 @@ public class ArticlesApiService : IArticlesApiService
                     isFirst = false;
                 }
 
-                if (property.PropertyType != typeof(List<string>))
+                if (property.PropertyType == typeof(float))
+                {
+                    float floatValue = (float)value;
+                    NumberFormatInfo nfi = new NumberFormatInfo();
+                    nfi.NumberDecimalSeparator = ".";
+                    uri += $"&{property.Name}={floatValue.ToString(nfi)}";
+                }
+                else if (property.PropertyType != typeof(List<string>))
                 {
                     uri += $"&{property.Name}={value}";
                 }
@@ -64,6 +73,23 @@ public class ArticlesApiService : IArticlesApiService
             }
         }
 
-        return $"?{System.Web.HttpUtility.UrlEncode(uri)}";
+        return $"?{fixUri(uri)}";
+    }
+
+    private string fixUri(string uri)
+    {
+        StringBuilder sb = new StringBuilder(uri);
+
+        sb.Replace("[", "%5B");
+        sb.Replace("]", "%5D");
+        sb.Replace(" ", "%20");
+        sb.Replace("\"", "%22");
+        sb.Replace("*", "%2A");
+        sb.Replace("?", "%3F");
+        sb.Replace("True", "true");
+        sb.Replace("False", "false");
+        // FIXME: Le séparateur des valeurs 'float' utilise une virgule au lieu d'un point.
+
+        return sb.ToString();
     }
 }

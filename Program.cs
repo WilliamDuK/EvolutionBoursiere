@@ -33,6 +33,7 @@ builder.Services.AddSingleton<MongoDBService>();
 // builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser tous les controlleurs comme des services
 builder.Services.AddTransient<EvolutionBoursiere.Controllers.HttpRequeteController, EvolutionBoursiere.Controllers.HttpRequeteController>();
 builder.Services.AddSingleton<IArticlesApiService, ArticlesApiService>();
+builder.Services.AddTransient<ArticlesApiService, ArticlesApiService>();
 
 var app = builder.Build();
 
