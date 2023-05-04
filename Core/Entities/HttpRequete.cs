@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace EvolutionBoursiere.Core.Entities;
 
+// TODO: Implémenter HttpRequete à partir d'une extension de HttpRequest.
 public class HttpRequete
 {
     [BsonId]
