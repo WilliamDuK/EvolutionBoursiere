@@ -55,7 +55,7 @@ app.Logger.LogInformation("Exécution de l'application");
 app.Run();
 
 // TODO: Implémenter un moyen de cacher les clés API.
-// TODO: Implémenter un moyen d'exécuter le containeur Docker avec MongoDB.
-// TODO: Corriger mon architecture!
+// TODO: Intégrer l'utilisation de Docker.
+// TODO: Correction de l'architecture.
 // TODO: Faire les tests unitaires pour la logique d'affaires et la logique de données.
 // TODO: Faire le FrontEnd.
