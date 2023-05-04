@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using EvolutionBoursiere.Infrastructure.Data;
 using EvolutionBoursiere.Core.Entities;
 using EvolutionBoursiere.Core.Interfaces;
-using EvolutionBoursiere.Core.Entities.Articles.Models;
 using EvolutionBoursiere.Core.Entities.Articles.Api;
 
 namespace EvolutionBoursiere.Controllers
