@@ -10,22 +10,22 @@ namespace EvolutionBoursiere.Infrastructure.Services;
 
 public class ArticlesApiService : IArticlesApiService
 {
-    private readonly HttpClient _client;
-    private readonly string _key;
+    private static HttpClient Client { get; set; } = null!;
+    private static string Key { get; set; } = null!;
 
-    public ArticlesApiService(IOptions<ArticlesApiSettings> articlesApiSettings)
+    public static void Init(IOptions<ArticlesApiSettings> articlesApiSettings)
     {
-        _client = new HttpClient()
+        Client = new HttpClient()
         {
             BaseAddress = new Uri(articlesApiSettings.Value.ConnectionURI)
         };
-        _key = articlesApiSettings.Value.ApiKey;
+        Key = articlesApiSettings.Value.ApiKey;
     }
 
     public async Task<ArticlesApiResponse> GetArticles(ArticlesApiConfiguration config)
     {
         var url = string.Format(GetUri(config));
-        var response = await _client.GetAsync(url);
+        var response = await Client.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
             var stringResponse = await response.Content.ReadAsStringAsync();
@@ -51,7 +51,7 @@ public class ArticlesApiService : IArticlesApiService
             {
                 if (isFirst)
                 {
-                    uri += $"apiKey={_key}"; // TODO: Implémenter la clé API
+                    uri += $"apiKey={Key}"; // TODO: Implémenter la clé API
                     isFirst = false;
                 }
 
