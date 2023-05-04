@@ -54,7 +54,8 @@ app.MapControllers();
 app.Logger.LogInformation("Exécution de l'application");
 app.Run();
 
-// TODO: /!\ Implémenter un moyen de cacher les clés API. /!\
-// TODO: /!\ Corriger mon architecture! /!\
-// TODO: /!\ Faire les tests unitaires pour la logique d'affaires et la logique de données. /!\
+// TODO: Implémenter un moyen de cacher les clés API.
+// TODO: Implémenter un moyen d'exécuter le containeur Docker avec MongoDB.
+// TODO: Corriger mon architecture!
+// TODO: Faire les tests unitaires pour la logique d'affaires et la logique de données.
 // TODO: Faire le FrontEnd.
