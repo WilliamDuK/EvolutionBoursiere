@@ -40,7 +40,7 @@ namespace EvolutionBoursiere.Controllers
             }
 
             // TODO: La configuration doit être obtenu via l'interface frontend.
-            ArticlesApiConfiguration config = new ArticlesApiConfiguration()
+            /*ArticlesApiConfiguration config = new ArticlesApiConfiguration()
             {
                 q = "recall OR \"safety concern*\"",
                 title = "tesla OR TSLA OR \"General M?tors\" OR GM",
@@ -53,6 +53,16 @@ namespace EvolutionBoursiere.Controllers
                 maxDistance = 999,
                 lat = (float)134.45E-2f,
                 lon = (float)10.020f
+            };*/
+            ArticlesApiConfiguration config = new ArticlesApiConfiguration()
+            {
+                q = "inflation AND prices",
+                from = "2023-05-03",
+                sourceGroup = "top100",
+                showNumResults = true,
+                showReprints = false,
+                excludeLabel = new List<string>() { "Non-news", "Opinion", "Paid News", "Roundup", "Press Release" },
+                sortBy = "date"
             };
 
             ArticlesApiResponse articlesResponse = await _service.GetArticles(config);

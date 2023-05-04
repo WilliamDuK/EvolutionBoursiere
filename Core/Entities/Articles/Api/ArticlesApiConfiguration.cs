@@ -24,41 +24,41 @@ public class ArticlesApiConfiguration
 
     public string? refreshDateTo { get; set; } = null;
 
-    public string? articleId { get; set; } = null;
+    public List<string>? articleId { get; set; } = null; // TODO: Vérifier validité de la liste.
 
     public string? clusterId { get; set; } = null;
 
-    public string? medium { get; set; } = null;
+    public List<string>? medium { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? source { get; set; } = null;
+    public List<string>? source { get; set; } = null; // TODO: Vérifier validité de la liste.
 
     public string? sourceGroup { get; set; } = null;
 
-    public string? excludeSource { get; set; } = null;
+    public List<string>? excludeSource { get; set; } = null; // TODO: Vérifier validité de la liste.
 
     public bool? paywall { get; set; } = null;
 
-    public string? country { get; set; } = null;
+    public List<string>? country { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? language { get; set; } = null;
+    public List<string>? language { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? label { get; set; } = null;
+    public List<string>? label { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? excludeLabel { get; set; } = null;
+    public List<string>? excludeLabel { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? byline { get; set; } = null;
+    public List<string>? byline { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? topic { get; set; } = null;
+    public List<string>? topic { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? category { get; set; } = null;
+    public List<string>? category { get; set; } = null; // TODO: Vérifier validité de la liste.
 
     public string? journalistId { get; set; } = null;
 
-    public string? state { get; set; } = null;
+    public List<string>? state { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? city { get; set; } = null;
+    public List<string>? city { get; set; } = null; // TODO: Vérifier validité de la liste.
 
-    public string? area { get; set; } = null;
+    public List<string>? area { get; set; } = null; // TODO: Vérifier validité de la liste.
 
     public string? location { get; set; } = null;
 

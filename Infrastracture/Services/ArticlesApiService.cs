@@ -73,10 +73,10 @@ public class ArticlesApiService : IArticlesApiService
             }
         }
 
-        return $"?{fixUri(uri)}";
+        return $"?{encodeUri(uri)}";
     }
 
-    private string fixUri(string uri)
+    private string encodeUri(string uri)
     {
         StringBuilder sb = new StringBuilder(uri);
 
@@ -84,6 +84,8 @@ public class ArticlesApiService : IArticlesApiService
         sb.Replace("]", "%5D");
         sb.Replace(" ", "%20");
         sb.Replace("\"", "%22");
+        sb.Replace("(", "%28");
+        sb.Replace(")", "%29");
         sb.Replace("*", "%2A");
         sb.Replace("?", "%3F");
         sb.Replace("True", "true");
