@@ -83,7 +83,6 @@ namespace EvolutionBoursiere.Controllers
                 return Problem("L'ensemble 'ArticleContext.Articles' est nul.");
             }
 
-            // FIXME: System.InvalidOperationException: The entity type 'Category' requires a primary key to be defined. If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.
             var articles = await _context.Articles
                 .ToListAsync();
             foreach (var article in articles)
