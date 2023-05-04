@@ -30,10 +30,10 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+builder.Services.AddTransient<EvolutionBoursiere.Controllers.HttpRequeteController, EvolutionBoursiere.Controllers.HttpRequeteController>();
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoDBService>();
-// builder.Services.AddMvc().AddControllersAsServices(); // Permet d'utiliser tous les controlleurs comme des services
-builder.Services.AddTransient<EvolutionBoursiere.Controllers.HttpRequeteController, EvolutionBoursiere.Controllers.HttpRequeteController>();
+builder.Services.Configure<ArticlesApiSettings>(builder.Configuration.GetSection("Perigon"));
 builder.Services.AddSingleton<IArticlesApiService, ArticlesApiService>();
 
 var app = builder.Build();

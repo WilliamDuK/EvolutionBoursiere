@@ -3,19 +3,23 @@ using System.Text.Json;
 using EvolutionBoursiere.Core.Entities.Articles.Api;
 using EvolutionBoursiere.Core.Interfaces;
 using System.Globalization;
+using Microsoft.Extensions.Options;
+using EvolutionBoursiere.Core.Settings;
 
 namespace EvolutionBoursiere.Infrastructure.Services;
 
 public class ArticlesApiService : IArticlesApiService
 {
-    private static readonly HttpClient _client;
+    private readonly HttpClient _client;
+    private readonly string _key;
 
-    static ArticlesApiService()
+    public ArticlesApiService(IOptions<ArticlesApiSettings> articlesApiSettings)
     {
         _client = new HttpClient()
         {
-            BaseAddress = new Uri("https://api.goperigon.com/v1/all")
+            BaseAddress = new Uri(articlesApiSettings.Value.ConnectionURI)
         };
+        _key = articlesApiSettings.Value.ApiKey;
     }
 
     public async Task<ArticlesApiResponse> GetArticles(ArticlesApiConfiguration config)
@@ -47,7 +51,7 @@ public class ArticlesApiService : IArticlesApiService
             {
                 if (isFirst)
                 {
-                    uri += $"apiKey=[KEY]"; // TODO: Implémenter la clé API
+                    uri += $"apiKey={_key}"; // TODO: Implémenter la clé API
                     isFirst = false;
                 }
 
