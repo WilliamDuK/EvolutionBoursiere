@@ -4,6 +4,10 @@ using EvolutionBoursiere.Infrastructure.Data;
 using EvolutionBoursiere.Core.Entities;
 using EvolutionBoursiere.Core.Interfaces;
 using EvolutionBoursiere.Core.Entities.Articles.Api;
+using EvolutionBoursiere.Core.Entities.Articles.Models;
+using Microsoft.Extensions.Options;
+using EvolutionBoursiere.Core.Settings;
+using EvolutionBoursiere.Infrastructure.Services;
 
 namespace EvolutionBoursiere.Controllers
 {
@@ -16,22 +20,24 @@ namespace EvolutionBoursiere.Controllers
         private readonly HttpRequeteController _http;
         private readonly IArticlesApiService _service;
 
-        public ArticleController(ArticleContext context, ILogger<ArticleController> logger, HttpRequeteController http, IArticlesApiService service)
+        public ArticleController(ArticleContext context, ILogger<ArticleController> logger, HttpRequeteController http, IArticlesApiService service, IOptions<ArticlesApiSettings> articlesApiSettings)
         {
             _context = context;
             _logger = logger;
             _http = http;
             _service = service;
+            
+            ArticlesApiService.Init(articlesApiSettings);
         }
 
         /// <summary>
         /// Obtenir tous les articles.
         /// </summary>
         /// <returns>Tous les articles</returns>
-        /// <response code="204">Retourne succès sans contenu</response>
+        /// <response code="200">Retourne tous les articles</response>
         /// <response code="400">Si le DbSet Articles est nul</response>
         [HttpGet]
-        public async Task<IActionResult> GetArticles()
+        public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
         {
             if (!ArticlesExists())
             {
@@ -56,13 +62,13 @@ namespace EvolutionBoursiere.Controllers
             };*/
             ArticlesApiConfiguration config = new ArticlesApiConfiguration()
             {
-                q = "inflation AND prices",
-                from = "2023-05-03",
+                from = "2023-05-04",
                 sourceGroup = "top100",
                 showNumResults = true,
                 showReprints = false,
                 excludeLabel = new List<string>() { "Non-news", "Opinion", "Paid News", "Roundup", "Press Release" },
-                sortBy = "date"
+                sortBy = "date",
+                q = "inflation AND NOT prices"
             };
 
             ArticlesApiResponse articlesResponse = await _service.GetArticles(config);
@@ -74,7 +80,7 @@ namespace EvolutionBoursiere.Controllers
             await PostHttpRequete("GET", "/Article", config);
 
             _logger.LogInformation("Obtention de tous les articles.");
-            return NoContent();
+            return articlesResponse.articles;
         }
 
         /// <summary>
