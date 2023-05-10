@@ -34,7 +34,7 @@ builder.Services.AddTransient<EvolutionBoursiere.Controllers.HttpRequeteControll
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoDBService>();
 builder.Services.Configure<ArticlesApiSettings>(builder.Configuration.GetSection("Perigon"));
-builder.Services.AddSingleton<IArticlesApiService, ArticlesApiService>();
+builder.Services.AddScoped<IArticlesApiService, ArticlesApiService>();
 
 var app = builder.Build();
 
