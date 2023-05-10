@@ -22,7 +22,6 @@ public class Article
 	public string description { get; set; } = "";
 	public string content { get; set; } = "";
 	public string medium { get; set; } = "";
-	[NotMapped]
 	public List<string> links { get; set; } = new List<string>();
 	public List<Label> labels { get; set; } = new List<Label>();
 	public List<MatchedAuthor> matchedAuthors { get; set; } = new List<MatchedAuthor>();
@@ -73,9 +72,7 @@ public class Article
 
 		public string? id { get; set; }
 		public string? name { get; set; }
-		[NotMapped]
 		public List<string>? domains { get; set; }
-		[NotMapped]
 		public List<string>? symbols { get; set; }
 	}
 
